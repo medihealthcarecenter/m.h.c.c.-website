@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medi Health Care Center</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #AC2522;
+      --light: #f8f9fa;
+      --dark: #212529;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+      color: var(--dark);
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 30px 20px 40px;
+      text-align: center;
+    }
+
+    header img {
+      width: 120px;
+    }
+
+    header h1 {
+      font-size: 2.1rem;
+      margin: 10px 0 4px;
+      line-height: 1.2;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    /* ================= NAVBAR ================= */
+    nav {
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--dark);
+      padding: 10px 18px;
+      font-weight: 500;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    /* ================= SECTIONS ================= */
+    section {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    /* ================= GRID ================= */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .service-box {
+      padding: 25px;
+      border-radius: 12px;
+      background: var(--light);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ================= TABLE ================= */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th,
+    table td {
+      padding: 14px;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: left;
+    }
+
+    table th {
+      background: #f1f1f1;
+    }
+
+    /* ================= BUTTONS ================= */
+    a.button {
+      display: inline-block;
+      background: #25D366;
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    a.button:hover {
+      opacity: 0.9;
+    }
+
+    /* ================= WHATSAPP FLOAT ================= */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #ffffff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+    }
+
+    .whatsapp-float:hover {
+      opacity: 0.9;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: #111111;
+      color: #ffffff;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+  
+    /* ================= MOBILE OPTIMIZATION ================= */
+    @media (max-width: 768px) {
+      header {
+        padding: 24px 16px 30px;
+      }
+
+      header img {
+        width: 100px;
+      }
+
+      header h1 {
+        font-size: 1.7rem;
+      }
+
+      header p {
+        font-size: 0.85rem;
+      }
+
+      nav ul {
+        gap: 6px;
+      }
+
+      nav ul li a {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+      }
+
+      section {
+        margin: 30px auto;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      /* Table → Card-style on mobile */
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      table tr {
+        margin-bottom: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 12px;
+        background: #ffffff;
+      }
+
+      table th {
+        display: none;
+      }
+
+      table td {
+        border: none;
+        padding: 6px 0;
+        font-size: 0.9rem;
+      }
+
+      table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        display: block;
+        margin-bottom: 2px;
+        color: var(--primary);
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .whatsapp-float {
+        width: 52px;
+        height: 52px;
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="Logo.jpeg" alt="Medi Health Care Center Logo">
+    <h1>Medi Health Care Center</h1>
+    <p>Modern Care • Trusted Diagnostics • Expert Consultants</p>
+  </header>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctors">Doctors</a></li>
+      <li><a href="#appointment">Appointment</a></li>
+      <li><a href="#lab">Sindlab</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="card">
+      <h2>About Us</h2>
+      <p>
+        Medi Health Care Center (MHCC) is a modern medical facility in Bahria Town Karachi
+        offering consultant clinics, ultrasound services, and diagnostic laboratory
+        services in partnership with <strong>Sindlab</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="card">
+      <h2>Our Services</h2>
+      <div class="grid">
+        <div class="service-box">Consultant Clinics</div>
+        <div class="service-box">Ultrasound</div>
+        <div class="service-box">Sindlab Diagnostics</div>
+        <div class="service-box">Home Sample Collection (Coming Soon)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section id="doctors">
+    <div class="card">
+      <h2>Doctors & Fees</h2>
+      <table>
+        <tr>
+          <th>Doctor</th>
+          <th>Specialty</th>
+          <th>Timings</th>
+          <th>Appointment</th>
+        </tr>
+        <tr>
+          <td>Dr. Jahanzaib Asim</td>
+          <td>General Physician</td>
+          <td>6:00 PM – 7:30 PM (Mon to Wed)</td>
+          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
+        </tr>
+        <tr>
+          <td>Dr. Asad Ali</td>
+          <td>Orthopedic & General Surgeon</td>
+          <td>9:00 PM – 10:00 PM (Mon-Wed-Sat)</td>
+          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
+        </tr>
+        <tr>
+          <td>Dr. Sehrish</td>
+          <td>Sonologist / Ultrasound Scanner</td>
+          <td>11:00 AM – 01:00 PM (Daily)</td>
+          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
+        </tr>
+        <tr>
+          <td>Dr. Faisal</td>
+          <td>Child Specialist</td>
+          <td>7:00 PM – 8:00 PM (Mon to Thurs)</td>
+          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
+        </tr>
+        <tr>
+          <td>Dr. Saira Farhan</td>
+          <td>Psychiatrist</td>
+          <td>12:00 PM – 2:00 PM (Saturday)</td>
+          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
+        </tr>
+        <tr>
+          <td>Dr. Nashrah Aftab</td>
+          <td>Physiotherapist (DPT)</td>
+          <td>4:00 PM – 8:00 PM (Tue–Thurs–Sat)</td>
+          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
+        </tr>
+        <tr>
+          <td>Dr. Seema Liaquat</td>
+          <td>Sonologist / Ultrasound Scanner</td>
+          <td>5:00 PM – 7:00 PM (Daily except Fri–Sun)</td>
+          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- APPOINTMENT -->
+  <section id="appointment">
+    <div class="card">
+      <h2>Book Appointment</h2>
+      <p>Book your appointment instantly via WhatsApp</p>
+      <a href="https://wa.me/923368409409" target="_blank" class="button">📱 Book on WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- LAB -->
+  <section id="lab">
+    <div class="card">
+      <h2>Sindlab Laboratory</h2>
+      <p><strong>Timings:</strong> 10:00 AM – 9:00 PM</p>
+      <p><strong>Home Sample Collection:</strong> Available soon</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="card">
+      <h2>Contact Information</h2>
+      <p><strong>Address:</strong> Midway Commercial-B, OPP: Masjid-e-Sarwar near Park, Bahria Town Karachi</p>
+      <p><strong>Phone:</strong> 0336-8409409</p>
+      <p><strong>Email:</strong> medihealthcarebahria@gmail.com</p>
+
+      <iframe
+        src="https://www.google.com/maps?q=Medi+Health+Care+Center+Bahria+Town+Karachi&output=embed"
+        width="100%"
+        height="300"
+        style="border:0;border-radius:12px;margin-top:20px;"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Medi Health Care Center (MHCC)</p>
+    <p>All Rights Reserved</p>
+  </footer>
+
+  <!-- WHATSAPP FLOAT BUTTON -->
+  <a href="https://wa.me/923368409409" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    📱
+  </a>
+
+</body>
+</html>

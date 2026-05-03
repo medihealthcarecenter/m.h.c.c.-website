@@ -1,426 +1,1236 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medi Health Care Center</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <title>Medi Health Care Center – Bahria Town Karachi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Cinzel:wght@700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #AC2522;
-      --light: #f8f9fa;
-      --dark: #212529;
+      --crimson: #9B1B1B;
+      --crimson-dark: #6D0F0F;
+      --crimson-light: #C42B2B;
+      --navy: #0A2456;
+      --navy-light: #1A3A7A;
+      --gold: #D4A017;
+      --gold-light: #F0C040;
+      --white: #FFFFFF;
+      --off-white: #FDF8F3;
+      --light-gray: #F5F0EB;
+      --text-dark: #1A1A2E;
+      --text-mid: #4A4A5A;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f4f6f9;
-      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
     }
 
-    /* ================= HEADER ================= */
-    header {
-      background: var(--primary);
-      color: #ffffff;
-      padding: 30px 20px 40px;
-      text-align: center;
-    }
-
-    header img {
-      width: 120px;
-    }
-
-    header h1 {
-      font-size: 2.1rem;
-      margin: 10px 0 4px;
-      line-height: 1.2;
-    }
-
-    header p {
-      font-size: 0.95rem;
-      margin: 0;
-      opacity: 0.95;
-    }
-
-    /* ================= NAVBAR ================= */
+    /* ── NAVBAR ── */
     nav {
-      background: #ffffff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 36, 86, 0.97);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      border-bottom: 2px solid var(--gold);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
     }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 0;
-      padding: 10px 0;
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo img { height: 50px; width: 50px; border-radius: 50%; border: 2px solid var(--gold); }
+    .nav-brand { display: flex; flex-direction: column; }
+    .nav-brand span:first-child {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      line-height: 1.1;
     }
-
-    nav ul li a {
+    .nav-brand span:last-child {
+      font-family: 'DM Sans', sans-serif;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
       text-decoration: none;
-      color: var(--dark);
-      padding: 10px 18px;
+      font-size: 0.82rem;
       font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 2px;
     }
-
-    nav ul li a:hover {
-      color: var(--primary);
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transform: scaleX(0);
+      transition: transform 0.25s;
     }
-
-    /* ================= SECTIONS ================= */
-    section {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 0 20px;
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      background: var(--crimson);
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 600 !important;
+      border: 1px solid var(--crimson-light);
+      transition: background 0.2s, transform 0.2s !important;
     }
+    .nav-cta:hover { background: var(--crimson-light) !important; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
 
-    .card {
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(10,36,86,0.92) 0%, rgba(109,15,15,0.88) 60%, rgba(10,36,86,0.82) 100%),
+        url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1600&q=80') center/cover no-repeat;
+      display: flex; align-items: center;
+      padding: 100px 5% 80px;
+      position: relative;
+      overflow: hidden;
     }
-
-    h2 {
-      color: var(--primary);
-      margin-bottom: 20px;
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(212,160,23,0.08) 0%, transparent 60%);
     }
-
-    /* ================= GRID ================= */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .service-box {
-      padding: 25px;
-      border-radius: 12px;
-      background: var(--light);
-      text-align: center;
-      font-weight: 500;
-    }
-
-    /* ================= TABLE ================= */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    table th,
-    table td {
-      padding: 14px;
-      border-bottom: 1px solid #e0e0e0;
-      text-align: left;
-    }
-
-    table th {
-      background: #f1f1f1;
-    }
-
-    /* ================= BUTTONS ================= */
-    a.button {
-      display: inline-block;
-      background: #25D366;
-      color: #ffffff;
-      padding: 14px 22px;
-      border-radius: 10px;
+    .hero-content { max-width: 680px; animation: fadeUp 0.9s ease both; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid rgba(212,160,23,0.4);
+      color: var(--gold-light);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.75rem;
       font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge span { width: 6px; height: 6px; background: var(--gold-light); border-radius: 50%; animation: pulse 2s infinite; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.08;
+      margin-bottom: 20px;
+      font-weight: 900;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+      display: block;
+    }
+    .hero p {
+      color: rgba(255,255,255,0.78);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 540px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--crimson);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 6px;
       text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: 2px solid var(--crimson-light);
+      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--crimson-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(155,27,27,0.45); }
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 14px 30px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      border: 2px solid rgba(255,255,255,0.35);
+      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--gold-light); color: var(--gold-light); }
+    .hero-stats {
+      display: flex; gap: 48px; margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat { color: white; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 4px;
     }
 
-    a.button:hover {
-      opacity: 0.9;
+    /* ── SECTIONS ── */
+    section { padding: 90px 5%; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 12px;
     }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--text-mid);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 600px;
+    }
+    .section-header { margin-bottom: 56px; }
 
-    /* ================= WHATSAPP FLOAT ================= */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: #ffffff;
-      width: 56px;
-      height: 56px;
+    /* ── SERVICES STRIP ── */
+    .services-strip {
+      background: var(--navy);
+      padding: 32px 5%;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;
+    }
+    .svc-item {
+      display: flex; align-items: center; gap: 12px; color: white;
+    }
+    .svc-icon {
+      width: 44px; height: 44px;
+      background: var(--crimson);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-      z-index: 999;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
     }
+    .svc-item span { font-size: 0.88rem; font-weight: 500; }
 
-    .whatsapp-float:hover {
-      opacity: 0.9;
+    /* ── DOCTORS ── */
+    #doctors { background: var(--light-gray); }
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
     }
-
-    /* ================= FOOTER ================= */
-    footer {
-      background: #111111;
-      color: #ffffff;
-      padding: 30px 20px;
+    .doctor-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(155,27,27,0.08);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .doctor-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(155,27,27,0.15); }
+    .doctor-card-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 20px 22px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .doc-avatar {
+      width: 56px; height: 56px;
+      background: var(--crimson);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      flex-shrink: 0;
+      border: 2px solid rgba(212,160,23,0.6);
+    }
+    .doc-name { color: white; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+    .doc-quals { color: rgba(255,255,255,0.6); font-size: 0.72rem; margin-top: 3px; line-height: 1.4; }
+    .doctor-card-body { padding: 18px 22px 20px; }
+    .doc-specialty {
+      display: inline-block;
+      background: rgba(155,27,27,0.08);
+      color: var(--crimson);
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .doc-schedule { display: flex; flex-direction: column; gap: 6px; }
+    .doc-time {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; color: var(--text-mid);
+    }
+    .doc-time svg { color: var(--gold); flex-shrink: 0; }
+    .book-doc-btn {
+      display: block; width: 100%;
+      background: var(--crimson);
+      color: white;
+      padding: 10px;
+      border: none; border-radius: 6px;
+      font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; margin-top: 16px;
       text-align: center;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .book-doc-btn:hover { background: var(--crimson-light); transform: translateY(-1px); }
+
+    /* ── APPOINTMENT ── */
+    #appointment { background: white; }
+    .appt-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .appt-info h2 { margin-bottom: 20px; }
+    .appt-info p { color: var(--text-mid); line-height: 1.8; margin-bottom: 28px; }
+    .appt-features { display: flex; flex-direction: column; gap: 14px; }
+    .appt-feat {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .appt-feat-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(155,27,27,0.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .appt-feat-text strong { display: block; font-size: 0.88rem; color: var(--navy); margin-bottom: 2px; }
+    .appt-feat-text span { font-size: 0.8rem; color: var(--text-mid); }
+
+    .appt-form {
+      background: var(--light-gray);
+      border-radius: 16px;
+      padding: 36px;
+      border: 1px solid rgba(155,27,27,0.08);
+    }
+    .appt-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: var(--navy); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 11px 14px;
+      border: 1.5px solid rgba(10,36,86,0.15);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      background: white;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--crimson); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .whatsapp-btn {
+      width: 100%;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 8px;
+    }
+    .whatsapp-btn:hover { background: #1DB954; transform: translateY(-2px); }
+    .whatsapp-btn svg { width: 22px; height: 22px; }
+
+    /* ── LAB ── */
+    #lab {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    #lab::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(212,160,23,0.12) 0%, transparent 70%);
+    }
+    #lab .section-title { color: white; }
+    #lab .section-tag { color: var(--gold-light); }
+    .lab-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .sindlab-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 28px;
+    }
+    .sindlab-badge .badge-text { font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.4; }
+    .sindlab-badge .badge-name { font-weight: 700; font-size: 1.05rem; color: var(--gold-light); }
+    #lab p { color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 16px; }
+    .lab-tests-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .lab-test-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 14px 16px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .lab-test-item span { font-size: 1.1rem; }
+    .lab-offer-card {
+      background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+      border-radius: 16px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .lab-offer-card::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .offer-badge {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+    .offer-percent {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+    }
+    .offer-percent span { font-size: 2rem; }
+    .offer-desc { color: rgba(255,255,255,0.8); font-size: 0.92rem; line-height: 1.6; margin: 12px 0 24px; }
+
+    /* ── ULTRASOUND ── */
+    #ultrasound { background: var(--light-gray); }
+    .ultra-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .ultra-cards { display: flex; flex-direction: column; gap: 16px; }
+    .ultra-card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px 24px;
+      border-left: 4px solid var(--crimson);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: transform 0.25s;
+    }
+    .ultra-card:hover { transform: translateX(6px); }
+    .ultra-card h4 { color: var(--navy); font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+    .ultra-card p { color: var(--text-mid); font-size: 0.83rem; line-height: 1.6; }
+    .ultra-card .doc-tag {
+      display: inline-block;
+      background: rgba(155,27,27,0.08);
+      color: var(--crimson);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    .ultra-book-panel {
+      background: white;
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+      position: sticky; top: 90px;
+    }
+    .ultra-book-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 24px;
     }
 
-    footer p {
-      margin: 6px 0;
-      font-size: 14px;
+    /* ── MAP & CONTACT ── */
+    #contact { background: white; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-details { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 18px 20px;
+      background: var(--light-gray);
+      border-radius: 10px;
     }
-  
-    /* ================= MOBILE OPTIMIZATION ================= */
-    @media (max-width: 768px) {
-      header {
-        padding: 24px 16px 30px;
-      }
-
-      header img {
-        width: 100px;
-      }
-
-      header h1 {
-        font-size: 1.7rem;
-      }
-
-      header p {
-        font-size: 0.85rem;
-      }
-
-      nav ul {
-        gap: 6px;
-      }
-
-      nav ul li a {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-      }
-
-      section {
-        margin: 30px auto;
-      }
-
-      .card {
-        padding: 22px;
-      }
-
-      h2 {
-        font-size: 1.4rem;
-      }
-
-      /* Table → Card-style on mobile */
-      table,
-      thead,
-      tbody,
-      th,
-      td,
-      tr {
-        display: block;
-      }
-
-      table tr {
-        margin-bottom: 20px;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        padding: 12px;
-        background: #ffffff;
-      }
-
-      table th {
-        display: none;
-      }
-
-      table td {
-        border: none;
-        padding: 6px 0;
-        font-size: 0.9rem;
-      }
-
-      table td::before {
-        content: attr(data-label);
-        font-weight: 600;
-        display: block;
-        margin-bottom: 2px;
-        color: var(--primary);
-      }
-
-      .button {
-        width: 100%;
-        text-align: center;
-        margin-top: 8px;
-      }
-
-      .whatsapp-float {
-        width: 52px;
-        height: 52px;
-        font-size: 26px;
-      }
+    .contact-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--crimson);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.1rem;
     }
+    .contact-item strong { display: block; color: var(--navy); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+    .contact-item a, .contact-item span { color: var(--text-mid); font-size: 0.88rem; text-decoration: none; }
+    .contact-item a:hover { color: var(--crimson); }
+    .map-container {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      height: 380px;
+    }
+    .map-container iframe { width: 100%; height: 100%; border: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 56px 5% 28px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 28px;
+    }
+    .footer-brand img { height: 64px; width: 64px; border-radius: 50%; border: 2px solid var(--gold); margin-bottom: 16px; }
+    .footer-brand p { color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.7; }
+    .footer-col h4 {
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { color: rgba(255,255,255,0.45); font-size: 0.78rem; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6); z-index: 9999;
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 36px;
+      max-width: 520px; width: 100%;
+      position: relative;
+      animation: slideUp 0.3s ease;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.4rem; color: var(--text-mid);
+    }
+    .modal h3 { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1.5rem; margin-bottom: 24px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .appt-wrapper, .lab-content, .ultra-content, .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .ultra-book-panel { position: static; }
+    }
+
+    .scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
+    .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="Logo.jpeg" alt="Medi Health Care Center Logo">
-    <h1>Medi Health Care Center</h1>
-    <p>Modern Care • Trusted Diagnostics • Expert Consultants</p>
-  </header>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#doctors">Doctors</a></li>
-      <li><a href="#appointment">Appointment</a></li>
-      <li><a href="#lab">Sindlab</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="card">
-      <h2>About Us</h2>
-      <p>
-        Medi Health Care Center (MHCC) is a modern medical facility in Bahria Town Karachi
-        offering consultant clinics, ultrasound services, and diagnostic laboratory
-        services in partnership with <strong>Sindlab</strong>.
-      </p>
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-logo" href="#home">
+    <img src="https://i.imgur.com/placeholder.png" alt="MHCC Logo" onerror="this.style.display='none'" id="nav-logo-img" />
+    <div id="nav-logo-fallback" style="width:50px;height:50px;background:var(--crimson);border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:white;font-family:'Cinzel',serif;font-weight:700;font-size:0.75rem;">MHCC</div>
+    <div class="nav-brand">
+      <span>Medi Health Care Center</span>
+      <span>Bahria Town Karachi</span>
     </div>
-  </section>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#doctors">Our Doctors</a></li>
+    <li><a href="#lab">Lab Services</a></li>
+    <li><a href="#ultrasound">Ultrasound</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#appointment" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="card">
-      <h2>Our Services</h2>
-      <div class="grid">
-        <div class="service-box">Consultant Clinics</div>
-        <div class="service-box">Ultrasound</div>
-        <div class="service-box">Sindlab Diagnostics</div>
-        <div class="service-box">Home Sample Collection (Coming Soon)</div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span>
+      Now Accepting Appointments Online
+    </div>
+    <h1>
+      Your Health,
+      <em>Our Priority.</em>
+    </h1>
+    <p>
+      Medi Health Care Center — Bahria Town's premier one-stop healthcare destination. Expert consultants, trusted diagnostics in partnership with Sindlab, and specialist ultrasound services — all under one roof.
+    </p>
+    <div class="hero-actions">
+      <a href="#appointment" class="btn-primary">
+        📅 Book Appointment
+      </a>
+      <a href="tel:03368409409" class="btn-secondary">
+        📞 Call Us Now
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">9+</div>
+        <div class="stat-label">Specialist Doctors</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">45</div>
+        <div class="stat-label">Years Sindlab Trust</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Stop Healthcare</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- DOCTORS -->
-  <section id="doctors">
-    <div class="card">
-      <h2>Doctors & Fees</h2>
-      <table>
-        <tr>
-          <th>Doctor</th>
-          <th>Specialty</th>
-          <th>Timings</th>
-          <th>Appointment</th>
-        </tr>
-        <tr>
-          <td>Dr. Jahanzaib Asim</td>
-          <td>General Physician</td>
-          <td>6:00 PM – 7:30 PM (Mon to Wed)</td>
-          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td>Dr. Asad Ali</td>
-          <td>Orthopedic & General Surgeon</td>
-          <td>9:00 PM – 10:00 PM (Mon-Wed-Sat)</td>
-          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td>Dr. Sehrish</td>
-          <td>Sonologist / Ultrasound Scanner</td>
-          <td>11:00 AM – 01:00 PM (Daily)</td>
-          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td>Dr. Faisal</td>
-          <td>Child Specialist</td>
-          <td>7:00 PM – 8:00 PM (Mon to Thurs)</td>
-          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td>Dr. Saira Farhan</td>
-          <td>Psychiatrist</td>
-          <td>12:00 PM – 2:00 PM (Saturday)</td>
-          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td>Dr. Nashrah Aftab</td>
-          <td>Physiotherapist (DPT)</td>
-          <td>4:00 PM – 8:00 PM (Tue–Thurs–Sat)</td>
-          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
-        </tr>
-        <tr>
-          <td>Dr. Seema Liaquat</td>
-          <td>Sonologist / Ultrasound Scanner</td>
-          <td>5:00 PM – 7:00 PM (Daily except Fri–Sun)</td>
-          <td><a href="https://wa.me/923368409409" target="_blank" class="button" style="padding:8px 14px;font-size:0.85rem;">WhatsApp</a></td>
-        </tr>
-      </table>
+<!-- SERVICES STRIP -->
+<div class="services-strip">
+  <div class="svc-item"><div class="svc-icon">🩺</div><span>Expert Consultations</span></div>
+  <div class="svc-item"><div class="svc-icon">🔬</div><span>Sindlab Diagnostics</span></div>
+  <div class="svc-item"><div class="svc-icon">🫀</div><span>Ultrasound Services</span></div>
+  <div class="svc-item"><div class="svc-icon">👶</div><span>Paediatric Care</span></div>
+  <div class="svc-item"><div class="svc-icon">🧠</div><span>Psychiatry &amp; Counselling</span></div>
+</div>
+
+<!-- DOCTORS -->
+<section id="doctors">
+  <div class="section-header scroll-reveal">
+    <div class="section-tag">Our Medical Team</div>
+    <h2 class="section-title">Meet Our Specialist Doctors</h2>
+    <p class="section-sub">Highly qualified consultants across multiple specialities — here to serve you with care and expertise.</p>
+  </div>
+  <div class="doctors-grid">
+
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">JA</div>
+        <div>
+          <div class="doc-name">Dr. Jahanzaib Asim</div>
+          <div class="doc-quals">MD (Emergency Medicine)</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">General Physician</div>
+        <div class="doc-schedule">
+          <div class="doc-time">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+            6:00 PM – 7:30 PM
+          </div>
+          <div class="doc-time">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+            Monday to Wednesday
+          </div>
+        </div>
+        <a href="#appointment" class="book-doc-btn" onclick="prefillDoctor('Dr. Jahanzaib Asim','General Physician')">Book Appointment</a>
+      </div>
     </div>
-  </section>
 
-  <!-- APPOINTMENT -->
-  <section id="appointment">
-    <div class="card">
-      <h2>Book Appointment</h2>
-      <p>Book your appointment instantly via WhatsApp</p>
-      <a href="https://wa.me/923368409409" target="_blank" class="button">📱 Book on WhatsApp</a>
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">AA</div>
+        <div>
+          <div class="doc-name">Dr. Asad Ali</div>
+          <div class="doc-quals">MBBS MSPH MS Surgery (G.S + Orthopedics)</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Orthopedic &amp; General Surgeon</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕘 9:00 PM – 10:00 PM</div>
+          <div class="doc-time">📅 Mon · Wed · Sat</div>
+        </div>
+        <a href="#appointment" class="book-doc-btn" onclick="prefillDoctor('Dr. Asad Ali','Orthopedic & General Surgeon')">Book Appointment</a>
+      </div>
     </div>
-  </section>
 
-  <!-- LAB -->
-  <section id="lab">
-    <div class="card">
-      <h2>Sindlab Laboratory</h2>
-      <p><strong>Timings:</strong> 10:00 AM – 9:00 PM</p>
-      <p><strong>Home Sample Collection:</strong> Available soon</p>
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">AS</div>
+        <div>
+          <div class="doc-name">Dr. Aneela Solangi</div>
+          <div class="doc-quals">MBBS, M.B.A</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Sonologist / Ultrasound Expert</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕓 4:00 PM – 6:00 PM</div>
+          <div class="doc-time">📅 Mon · Tue · Wed</div>
+        </div>
+        <a href="#ultrasound" class="book-doc-btn">Book Ultrasound</a>
+      </div>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="card">
-      <h2>Contact Information</h2>
-      <p><strong>Address:</strong> Midway Commercial-B, OPP: Masjid-e-Sarwar near Park, Bahria Town Karachi</p>
-      <p><strong>Phone:</strong> 0336-8409409</p>
-      <p><strong>Email:</strong> medihealthcarebahria@gmail.com</p>
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">SL</div>
+        <div>
+          <div class="doc-name">Dr. Seema Liaquat</div>
+          <div class="doc-quals">MBBS, DMRD, Diploma in Ultrasound</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Sonologist / Ultrasound Expert</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕛 12:00 PM – 2:00 PM</div>
+          <div class="doc-time">📅 Monday to Saturday</div>
+        </div>
+        <a href="#ultrasound" class="book-doc-btn">Book Ultrasound</a>
+      </div>
+    </div>
 
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">SF</div>
+        <div>
+          <div class="doc-name">Dr. Saira Farhan</div>
+          <div class="doc-quals">FCPS (Psychiatry), Advanced Diploma in Humanistic Integrative Counselling (BACP–Member)</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Psychiatrist</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕛 12:00 PM – 2:00 PM</div>
+          <div class="doc-time">📅 Saturday only</div>
+        </div>
+        <a href="#appointment" class="book-doc-btn" onclick="prefillDoctor('Dr. Saira Farhan','Psychiatrist')">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">NA</div>
+        <div>
+          <div class="doc-name">Dr. Nashrah Aftab</div>
+          <div class="doc-quals">D.P.T.</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Physiotherapist</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕓 4:00 PM – 8:00 PM</div>
+          <div class="doc-time">📅 Tue · Thu · Sat</div>
+        </div>
+        <a href="#appointment" class="book-doc-btn" onclick="prefillDoctor('Dr. Nashrah Aftab','Physiotherapist')">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">ZF</div>
+        <div>
+          <div class="doc-name">Dr. Zarqoon Fatima</div>
+          <div class="doc-quals">FCPS (Obstetrics &amp; Gynecology)</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Gynecologist / Obstetrician</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕖 7:00 PM – 9:00 PM</div>
+          <div class="doc-time">📅 Monday to Saturday</div>
+        </div>
+        <a href="#appointment" class="book-doc-btn" onclick="prefillDoctor('Dr. Zarqoon Fatima','Gynecologist / Obstetrician')">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">IC</div>
+        <div>
+          <div class="doc-name">Dr. Iram Chang</div>
+          <div class="doc-quals">MBBS, D.Dermatology</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Dermatologist</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕔 5:00 PM – 7:00 PM</div>
+          <div class="doc-time">📅 Friday · Saturday</div>
+        </div>
+        <a href="#appointment" class="book-doc-btn" onclick="prefillDoctor('Dr. Iram Chang','Dermatologist')">Book Appointment</a>
+      </div>
+    </div>
+
+    <div class="doctor-card scroll-reveal">
+      <div class="doctor-card-header">
+        <div class="doc-avatar">AJ</div>
+        <div>
+          <div class="doc-name">Dr. Aftab Alam Jamali</div>
+          <div class="doc-quals">MBBS, DCH, PGPN, DML.2</div>
+        </div>
+      </div>
+      <div class="doctor-card-body">
+        <div class="doc-specialty">Paediatric Consultant &amp; Neonatologist</div>
+        <div class="doc-schedule">
+          <div class="doc-time">🕔 5:00 PM – 8:00 PM</div>
+          <div class="doc-time">📅 Friday · Saturday</div>
+        </div>
+        <a href="#appointment" class="book-doc-btn" onclick="prefillDoctor('Dr. Aftab Alam Jamali','Paediatric Consultant & Neonatologist')">Book Appointment</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment">
+  <div class="appt-wrapper">
+    <div class="appt-info scroll-reveal">
+      <div class="section-tag">Easy Booking</div>
+      <h2 class="section-title">Book an Appointment in Seconds</h2>
+      <p>Fill in your details and your appointment request will be sent directly to our clinic via WhatsApp. Our team will confirm your slot promptly.</p>
+      <div class="appt-features">
+        <div class="appt-feat">
+          <div class="appt-feat-icon">⚡</div>
+          <div class="appt-feat-text">
+            <strong>Instant WhatsApp Notification</strong>
+            <span>Your booking goes straight to the clinic's WhatsApp in real time.</span>
+          </div>
+        </div>
+        <div class="appt-feat">
+          <div class="appt-feat-icon">🩺</div>
+          <div class="appt-feat-text">
+            <strong>Choose Your Specialist</strong>
+            <span>Select from our full roster of qualified specialist doctors.</span>
+          </div>
+        </div>
+        <div class="appt-feat">
+          <div class="appt-feat-icon">📅</div>
+          <div class="appt-feat-text">
+            <strong>Preferred Date &amp; Time</strong>
+            <span>Pick your most convenient time and we'll do our best to accommodate.</span>
+          </div>
+        </div>
+        <div class="appt-feat">
+          <div class="appt-feat-icon">🔒</div>
+          <div class="appt-feat-text">
+            <strong>Confidential &amp; Secure</strong>
+            <span>Your personal health information is always kept private.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="appt-form scroll-reveal">
+      <h3>📋 Appointment Request</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="appt-name" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" id="appt-phone" placeholder="03XX-XXXXXXX" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Select Doctor *</label>
+        <select id="appt-doctor">
+          <option value="">— Choose a Doctor —</option>
+          <option>Dr. Jahanzaib Asim – General Physician</option>
+          <option>Dr. Asad Ali – Orthopedic & General Surgeon</option>
+          <option>Dr. Saira Farhan – Psychiatrist</option>
+          <option>Dr. Nashrah Aftab – Physiotherapist</option>
+          <option>Dr. Zarqoon Fatima – Gynecologist / Obstetrician</option>
+          <option>Dr. Iram Chang – Dermatologist</option>
+          <option>Dr. Aftab Alam Jamali – Paediatric Consultant & Neonatologist</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Date *</label>
+          <input type="date" id="appt-date" />
+        </div>
+        <div class="form-group">
+          <label>Preferred Time *</label>
+          <input type="time" id="appt-time" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Reason / Complaint</label>
+        <textarea id="appt-reason" placeholder="Briefly describe your symptoms or reason for visit…"></textarea>
+      </div>
+      <button class="whatsapp-btn" onclick="sendAppointmentWA()">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Send via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- LAB SERVICES -->
+<section id="lab">
+  <div class="lab-content">
+    <div class="scroll-reveal">
+      <div class="section-tag">Diagnostics &amp; Lab</div>
+      <div class="sindlab-badge">
+        <div>🔬</div>
+        <div class="badge-text">
+          <div class="badge-name">Sindlab Diagnostics</div>
+          45 Years of Trusted Lab Services
+        </div>
+      </div>
+      <h2 class="section-title">Complete Blood Tests &amp; Diagnostics</h2>
+      <p>We have partnered with Sindlab — one of Pakistan's most trusted diagnostic laboratories with 45 years of excellence — to bring you accurate, reliable, and affordable lab testing right here at MHCC.</p>
+      <p>No need to travel elsewhere. Get your tests done and consult your doctor — all in one visit, under one roof.</p>
+      <div class="lab-tests-grid">
+        <div class="lab-test-item"><span>🩸</span> Complete Blood Count</div>
+        <div class="lab-test-item"><span>🧪</span> Urine Analysis</div>
+        <div class="lab-test-item"><span>🫀</span> Cardiac Markers</div>
+        <div class="lab-test-item"><span>🍬</span> Blood Sugar (HbA1c)</div>
+        <div class="lab-test-item"><span>🦠</span> Culture &amp; Sensitivity</div>
+        <div class="lab-test-item"><span>🧬</span> Thyroid Function</div>
+        <div class="lab-test-item"><span>🫁</span> Liver &amp; Kidney Profile</div>
+        <div class="lab-test-item"><span>💉</span> Hormonal Profiles</div>
+      </div>
+    </div>
+    <div class="scroll-reveal">
+      <div class="lab-offer-card">
+        <div class="offer-badge">⚡ Special Offer — Limited Time</div>
+        <div class="offer-percent"><span>Get </span>20<span>% OFF</span></div>
+        <div class="offer-desc">On ALL lab tests at Sindlab — available exclusively for MHCC patients. Mention this offer when booking your test.</div>
+        <a href="tel:03368409409" class="btn-primary" style="background:white;color:var(--crimson);border-color:rgba(255,255,255,0.3);">
+          📞 Enquire About Tests
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ULTRASOUND -->
+<section id="ultrasound">
+  <div class="section-header scroll-reveal">
+    <div class="section-tag">Imaging Services</div>
+    <h2 class="section-title">Specialist Ultrasound Services</h2>
+    <p class="section-sub">Our trained sonologists — both male and female — provide accurate and professional ultrasound imaging for all patient needs.</p>
+  </div>
+  <div class="ultra-content">
+    <div class="ultra-cards scroll-reveal">
+      <div class="ultra-card">
+        <h4>Obstetric Ultrasound</h4>
+        <p>Pregnancy monitoring, fetal growth assessment, anomaly scans, and dating scans performed with care and precision.</p>
+        <span class="doc-tag">👩‍⚕️ Dr. Aneela Solangi &amp; Dr. Seema Liaquat</span>
+      </div>
+      <div class="ultra-card">
+        <h4>Abdominal &amp; Pelvic Ultrasound</h4>
+        <p>Assessment of liver, gallbladder, kidneys, spleen, and pelvic organs for accurate diagnosis and monitoring.</p>
+        <span class="doc-tag">👩‍⚕️ Available Mon–Sat</span>
+      </div>
+      <div class="ultra-card">
+        <h4>Gynecological Ultrasound</h4>
+        <p>Uterine, ovarian, and cervical assessment with female sonologists available for patient comfort and privacy.</p>
+        <span class="doc-tag">👩‍⚕️ Female Doctor Available</span>
+      </div>
+      <div class="ultra-card">
+        <h4>General Soft Tissue Imaging</h4>
+        <p>Neck, thyroid, musculoskeletal, and other soft tissue ultrasound evaluations performed by qualified sonologists.</p>
+        <span class="doc-tag">📅 Book in Advance</span>
+      </div>
+    </div>
+    <div class="ultra-book-panel scroll-reveal">
+      <h3>📷 Book Your Ultrasound</h3>
+      <div class="form-group">
+        <label>Full Name *</label>
+        <input type="text" id="ultra-name" placeholder="Your full name" />
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" id="ultra-phone" placeholder="03XX-XXXXXXX" />
+      </div>
+      <div class="form-group">
+        <label>Type of Ultrasound</label>
+        <select id="ultra-type">
+          <option value="">— Select Type —</option>
+          <option>Obstetric / Pregnancy Scan</option>
+          <option>Abdominal Ultrasound</option>
+          <option>Pelvic Ultrasound</option>
+          <option>Gynecological Ultrasound</option>
+          <option>Thyroid / Neck Ultrasound</option>
+          <option>General / Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Doctor</label>
+        <select id="ultra-doctor">
+          <option value="">— No Preference —</option>
+          <option>Dr. Aneela Solangi (Mon–Wed, 4–6 PM)</option>
+          <option>Dr. Seema Liaquat (Mon–Sat, 12–2 PM)</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="ultra-date" />
+        </div>
+        <div class="form-group">
+          <label>Preferred Time</label>
+          <input type="time" id="ultra-time" />
+        </div>
+      </div>
+      <button class="whatsapp-btn" onclick="sendUltrasoundWA()">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book Ultrasound via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT & MAP -->
+<section id="contact">
+  <div class="section-header scroll-reveal">
+    <div class="section-tag">Find Us</div>
+    <h2 class="section-title">Contact &amp; Location</h2>
+    <p class="section-sub">We're conveniently located in Bahria Town Karachi — easy to reach from all sectors.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-details scroll-reveal">
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <strong>Appointments &amp; Enquiries</strong>
+          <a href="tel:03368409409">0336-8409409</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <strong>Email</strong>
+          <a href="mailto:medihealthcarebahria@gmail.com">medihealthcarebahria@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <strong>Website</strong>
+          <a href="https://www.medihealthcarecenter.com.pk" target="_blank">www.medihealthcarecenter.com.pk</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <strong>Address</strong>
+          <span>Plot No B-233, Shop 04, Midway Commercial-B,<br>Opp: Masjid-e-Sarwar Park, Bahria Town Karachi</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <strong>Clinic Hours</strong>
+          <span>Monday – Saturday | Timings vary by doctor</span>
+        </div>
+      </div>
+      <a href="https://wa.me/923368409409?text=Hello%20MHCC%2C%20I%20have%20a%20query." target="_blank" class="btn-primary" style="justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat with us on WhatsApp
+      </a>
+    </div>
+    <div class="map-container scroll-reveal">
       <iframe
-        src="https://www.google.com/maps?q=Medi+Health+Care+Center+Bahria+Town+Karachi&output=embed"
-        width="100%"
-        height="300"
-        style="border:0;border-radius:12px;margin-top:20px;"
-        loading="lazy">
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.8!2d67.03!3d24.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDUxJzM2LjAiTiA2N8KwMDEnNDguMCJF!5e0!3m2!1sen!2spk!4v1234567890!5m2!1sen!2spk&q=Midway+Commercial+Bahria+Town+Karachi+B-233"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="MHCC Location">
       </iframe>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 Medi Health Care Center (MHCC)</p>
-    <p>All Rights Reserved</p>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div style="width:64px;height:64px;background:var(--crimson);border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:white;font-family:'Cinzel',serif;font-weight:700;font-size:1rem;margin-bottom:16px;">MHCC</div>
+      <p>Medi Health Care Center — Bahria Town Karachi's trusted one-stop healthcare destination. Expert consultations, Sindlab diagnostics, and specialist ultrasound services.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#doctors">Our Doctors</a></li>
+        <li><a href="#appointment">Book Appointment</a></li>
+        <li><a href="#lab">Lab Services</a></li>
+        <li><a href="#ultrasound">Ultrasound</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:03368409409">0336-8409409</a></li>
+        <li><a href="mailto:medihealthcarebahria@gmail.com">medihealthcarebahria@gmail.com</a></li>
+        <li><a href="#">Plot B-233, Shop 04, Midway Commercial-B, Bahria Town KHI</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Medi Health Care Center. All rights reserved.</p>
+    <p>Modern Care · Trusted Diagnostics · Expert Consultants</p>
+  </div>
+</footer>
 
-  <!-- WHATSAPP FLOAT BUTTON -->
-  <a href="https://wa.me/923368409409" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    📱
-  </a>
+<!-- SCRIPT -->
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.querySelectorAll('input[type=date]').forEach(el => el.min = today);
+
+  // Prefill doctor from card click
+  function prefillDoctor(name, specialty) {
+    const sel = document.getElementById('appt-doctor');
+    for (let opt of sel.options) {
+      if (opt.text.includes(name.split(' ')[1])) { sel.value = opt.value; break; }
+    }
+  }
+
+  // WhatsApp appointment
+  function sendAppointmentWA() {
+    const name = document.getElementById('appt-name').value.trim();
+    const phone = document.getElementById('appt-phone').value.trim();
+    const doctor = document.getElementById('appt-doctor').value.trim();
+    const date = document.getElementById('appt-date').value;
+    const time = document.getElementById('appt-time').value;
+    const reason = document.getElementById('appt-reason').value.trim();
+
+    if (!name || !phone || !doctor) {
+      alert('Please fill in your name, phone number, and select a doctor.');
+      return;
+    }
+
+    const msg = `🏥 *NEW APPOINTMENT REQUEST — MHCC*\n\n` +
+      `👤 *Patient Name:* ${name}\n` +
+      `📞 *Phone:* ${phone}\n` +
+      `🩺 *Doctor:* ${doctor}\n` +
+      `📅 *Preferred Date:* ${date || 'Not specified'}\n` +
+      `🕐 *Preferred Time:* ${time || 'Not specified'}\n` +
+      `📋 *Reason/Complaint:* ${reason || 'Not mentioned'}\n\n` +
+      `_Booking submitted via MHCC Website_`;
+
+    window.open(`https://wa.me/923368409409?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // WhatsApp ultrasound
+  function sendUltrasoundWA() {
+    const name = document.getElementById('ultra-name').value.trim();
+    const phone = document.getElementById('ultra-phone').value.trim();
+    const type = document.getElementById('ultra-type').value.trim();
+    const doctor = document.getElementById('ultra-doctor').value.trim();
+    const date = document.getElementById('ultra-date').value;
+    const time = document.getElementById('ultra-time').value;
+
+    if (!name || !phone) {
+      alert('Please fill in your name and phone number.');
+      return;
+    }
+
+    const msg = `🔬 *ULTRASOUND BOOKING REQUEST — MHCC*\n\n` +
+      `👤 *Patient Name:* ${name}\n` +
+      `📞 *Phone:* ${phone}\n` +
+      `🫀 *Type of Ultrasound:* ${type || 'Not specified'}\n` +
+      `👩‍⚕️ *Preferred Doctor:* ${doctor || 'No preference'}\n` +
+      `📅 *Preferred Date:* ${date || 'Not specified'}\n` +
+      `🕐 *Preferred Time:* ${time || 'Not specified'}\n\n` +
+      `_Booking submitted via MHCC Website_`;
+
+    window.open(`https://wa.me/923368409409?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+</script>
 </body>
 </html>
